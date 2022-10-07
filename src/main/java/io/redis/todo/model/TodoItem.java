@@ -9,27 +9,28 @@ import com.redis.om.spring.annotations.Searchable;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor(staticName = "of")
+@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Data
 @Document
+@Getter
 public class TodoItem {
-  // Id Field, also indexed
+
   @Id
   @Indexed
   private String id;
 
-  // Indexed for exact text matching
   @Searchable @NonNull
   private String description;
 
   @Indexed @NonNull
   private String owner;
 
-  //Indexed for numeric matches
   @Indexed
   private boolean finished;
 

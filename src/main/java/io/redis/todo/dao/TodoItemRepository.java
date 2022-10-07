@@ -6,5 +6,9 @@ import io.redis.todo.model.TodoItem;
 
 
 public interface TodoItemRepository  extends RedisDocumentRepository<TodoItem,String> {
-    
+
+    Iterable<TodoItem> findByDescription(String description);
+    Iterable<TodoItem> findByOwner(String owner);
+    Iterable<TodoItem> findByOwnerAndDescription(String owner, String description);
+
 }
