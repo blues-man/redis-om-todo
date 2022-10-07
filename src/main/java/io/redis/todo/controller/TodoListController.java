@@ -46,4 +46,16 @@ public class TodoListController {
         return repo.save(newItem);
     }
 
+    @PostMapping("{id}")
+    public void delete(@PathVariable String id) throws Exception {
+        try {
+            Optional<TodoItem> todoItem = repo.findById(id);
+            if (todoItem.isPresent()) {
+                repo.deleteById(id);
+            }
+        } catch (Exception e) {
+            throw new Exception("Item not found " + id);
+        }
+    }
+
 }
