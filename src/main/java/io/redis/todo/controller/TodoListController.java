@@ -41,7 +41,7 @@ public class TodoListController {
         return repo.findByDescription(description);
     }
     
-    @PostMapping("/api/todolist")
+    @PostMapping()
     public TodoItem create(@RequestBody TodoItem newItem){
         return repo.save(newItem);
     }
